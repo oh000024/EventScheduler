@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1YR-S7-7vL"; */
+"1YR-S7-7vL.text" = "Label";
+
+/* Class = "UILabel"; text = "Description"; ObjectID = "1rf-pi-BWL"; */
+"1rf-pi-BWL.text" = "Description";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8M6-8A-RX3"; */
+"8M6-8A-RX3.text" = "Label";
+
+/* Class = "UILabel"; text = "Date"; ObjectID = "F06-LB-f6u"; */
+"F06-LB-f6u.text" = "Date";
+
+/* Class = "UIBarButtonItem"; title = "New"; ObjectID = "IsQ-Rt-VZA"; */
+"IsQ-Rt-VZA.title" = "New";
+
+/* Class = "UIButton"; normalTitle = "Create New Event"; ObjectID = "KYw-e8-5UG"; */
+"KYw-e8-5UG.normalTitle" = "Create New Event";
+
+/* Class = "UILabel"; text = "DATE:"; ObjectID = "U6U-CF-7GQ"; */
+"U6U-CF-7GQ.text" = "DATE:";
+
+/* Class = "UILabel"; text = "TITLE:"; ObjectID = "cpH-Vy-zfD"; */
+"cpH-Vy-zfD.text" = "TITLE:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cs4-Na-xdm"; */
+"cs4-Na-xdm.text" = "Label";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "l8v-ip-0Fx"; */
+"l8v-ip-0Fx.text" = "Title";
+
+/* Class = "UILabel"; text = "DESCRIPTION:"; ObjectID = "mnI-fz-Xd6"; */
+"mnI-fz-Xd6.text" = "DESCRIPTION:";
+
+/* Class = "UILabel"; text = "Event Information"; ObjectID = "qhM-bD-gL4"; */
+"qhM-bD-gL4.text" = "Event Information";
