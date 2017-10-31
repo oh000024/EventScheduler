@@ -8,6 +8,9 @@
 
 import Foundation
 
+///
+/// Usage: Passing created new Event Object
+///
 protocol EventPassingDelegate {
     func passEventData(newItem: Event)
 }

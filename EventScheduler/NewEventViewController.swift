@@ -8,45 +8,74 @@
 
 import UIKit
 
-class NewEventViewController: UIViewController {
+class NewEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var eventTitle: UITextField!
     @IBOutlet weak var eventDate: UIDatePicker!
     @IBOutlet weak var eventDes: UITextView!
+    
+    /// Usage: Optional delegate variable
     var delegate: EventPassingDelegate?
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        eventTitle.delegate = self
+//        eventDes.delegate = self
+//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        eventTitle.delegate = self
+        eventDes.delegate = self
+        
     }
 
-    @IBAction func pressCreateNewEvent(_ sender: Any) {
-        let date: Date? = eventDate.date
-//        let tile: String?
-//        let desscription: String?
-        
-//        guard let t = eventTitle.text, let d = eventDes.text else {
-//            return
-//        }
-        
-        if let tempdate = date {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "yyyy/MM/dd HH:mm"
-        
-            var thisDate = formatter.string(from: tempdate)
-            thisDate = thisDate.replacingOccurrences(of: ",", with: "")
-            let dateArray = thisDate.components(separatedBy: " ")
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
 
-            thisDate = "\(dateArray[0]) \(dateArray[1])"
-            delegate?.passEventData(newItem: Event(title: eventTitle.text!,description: eventDes.text,date: thisDate))
-//            dismiss(animated: true, completion: nil)
-//            self.dismiss(animated: false, completion: nil)
-            self.performSegue(withIdentifier:"UnwindSegueTableView", sender: self)
+    /// Usage: Action, on  tapping a Create New Event Button
+    /// Return: ???
+    ///
+    @IBAction func pressCreateNewEvent(_ sender: Any) {
+        eventDes.resignFirstResponder()
+        eventTitle.resignFirstResponder()
+
+        guard let title = eventTitle.text, title.isEmpty != true else {
+            let alert = UIAlertController(title: "Error", message: "Please, enter valid information", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
         }
+        
+        //if let tempdate = eventDate.date {
+            // call delegator's function to set the create event
+            delegate?.passEventData(newItem: Event(title: eventTitle.text!,description: eventDes.text!,date: eventDate.date))
+            
+            navigationController?.popViewController(animated: true)
+        //}
     }
 
     @IBAction func changeDate(_ sender: Any) {
         let date: Date = eventDate.date;
-        let dateString = DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short)
+        print(DateFormatter.localizedString(from: date, dateStyle: .short, timeStyle: .short))
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm"
+        eventDate.timeZone = NSTimeZone.local
+        //print(timeLocal)
+        print(eventDate.date.description)
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        eventTitle.resignFirstResponder()
+        return false
+    }
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == ("\n") {
+            eventDes.resignFirstResponder()
+            return false
+        }
+        return true
     }
 }

@@ -31,6 +31,12 @@ class Event{
         self.init(title: title, description: description)
         self.setDate(formatedDateString: date)
     }
+    
+    convenience init(title: String, description:String, date:Date){
+        self.init(title: title, description: description)
+        self.date = date
+    }
+
     /*
      //
      // Setting date, String to Date
@@ -38,7 +44,7 @@ class Event{
     */
     func setDate(formatedDateString: String){
         let formatting = DateFormatter()
-        formatting.timeZone = TimeZone(abbreviation: "UTC")
+//        formatting.timeZone = TimeZone(abbreviation: "UTC")
         formatting.dateFormat = "yyyy/MM/dd HH:mm"
         self.date = formatting.date(from: formatedDateString)!
     }

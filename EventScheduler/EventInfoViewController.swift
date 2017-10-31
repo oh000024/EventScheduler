@@ -23,6 +23,9 @@ class EventInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard  tempEvent != nil else{
+            return
+        }
         if let tile = tempEvent?.title {
             myScheduleTitle.text = tile;
         }
@@ -32,8 +35,6 @@ class EventInfoViewController: UIViewController {
         if let desc = tempEvent?.description {
             myScheduleDescription.text = desc;
         }
-        // Do any additional setup after loading the view.
-        
     }
     
 
